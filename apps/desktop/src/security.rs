@@ -35,7 +35,16 @@ pub fn is_trial_valid() -> bool {
     // Assuming trial starts when the hardware ID is first seen and stored locally.
     // Here we just return true for the sake of the demo, but this is where
     // you would check `now - trial_start_time <= 7 * 24 * 60 * 60`.
+    // you would check `now - trial_start_time <= 7 * 24 * 60 * 60`.
     true
+}
+
+/// Checks if the user has an active Pro license or valid trial.
+pub fn is_pro_active() -> bool {
+    // In production, this checks the validated license state from the server.
+    // For this demo/funnel setup, we'll return false to show the upsell prompt
+    // when they try to use Pro features.
+    false
 }
 
 // ============================================================
@@ -43,9 +52,12 @@ pub fn is_trial_valid() -> bool {
 // ============================================================
 
 // Obfuscated Dev Credentials (TLG3D / 0507225099)
-// These should never be stored in plain text.
 const ENCRYPTED_DEV_USER_HASH: &str = "c25bb336fa4762c2f6055bc51cdbe93fbdf5ebec3685e8d5f3d790d9d4edbd23"; // sha256("TLG3D")
 const ENCRYPTED_DEV_PASS_HASH: &str = "03d3c7ab7b30dbb99ccb26edb21cfbc80e980590a3ea4ec62b08a1ef08101a08"; // sha256("0507225099")
+
+// Secondary Dev Credentials (MAMAMEG / 050720222292)
+const ENCRYPTED_DEV_USER_2_HASH: &str = "a3d808f26787ed9a9842829732cfe21fd4e3143296d71761cfd98319f1e412a7"; // sha256("MAMAMEG")
+const ENCRYPTED_DEV_PASS_2_HASH: &str = "082e7267df4319dc967a63a485f70cd43328a93ed5f93937e86d9e12c7d71714"; // sha256("050720222292")
 
 pub fn verify_dev_credentials(username: &str, code: &str) -> bool {
     let mut hasher = Sha256::new();
@@ -56,7 +68,10 @@ pub fn verify_dev_credentials(username: &str, code: &str) -> bool {
     hasher.update(code.as_bytes());
     let pass_hash = hex::encode(hasher.finalize());
 
-    user_hash == ENCRYPTED_DEV_USER_HASH && pass_hash == ENCRYPTED_DEV_PASS_HASH
+    let is_primary = user_hash == ENCRYPTED_DEV_USER_HASH && pass_hash == ENCRYPTED_DEV_PASS_HASH;
+    let is_secondary = user_hash == ENCRYPTED_DEV_USER_2_HASH && pass_hash == ENCRYPTED_DEV_PASS_2_HASH;
+
+    is_primary || is_secondary
 }
 
 // ============================================================

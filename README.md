@@ -66,6 +66,19 @@ Accept editing commands from Discord, Telegram, Slack, WhatsApp, Signal, SMS, iM
 
 > 7-day free Pro trial on first install. Hardware-locked to prevent abuse.
 
+### 🔥 How CutFlow Compares
+
+| Feature | CutFlow (Free) | CutFlow Pro | CapCut | DaVinci Resolve | Premiere Pro |
+|---|---|---|---|---|---|
+| Price | **$0** | **$9.99/mo** | Free (paywalled) | Free | $22.99/mo |
+| AI Video Editing | ✅ Natural language | ✅ Full Director | ❌ | ❌ | ❌ |
+| Runs Offline | ✅ | ✅ | ❌ | ✅ | ❌ |
+| Auto B-Roll Sourcing | ❌ | ✅ | ❌ | ❌ | ❌ |
+| Smart Jump-Cut (AI) | ❌ | ✅ | ❌ | ❌ | ❌ |
+| Auto TikTok Shorts | ❌ | ✅ | ✅ (paid) | ❌ | ❌ |
+| Open Source | ✅ | ✅ | ❌ | ❌ | ❌ |
+| Your Data is Private | ✅ | ✅ | ❌ | ✅ | ❌ |
+
 ---
 
 ## 🖥️ System Requirements
